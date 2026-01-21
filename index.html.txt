@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LunaBag — Women Hand Bags</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__row">
+      <div class="brand">
+        <div class="brand__logo">LB</div>
+        <div class="brand__text">
+          <div class="brand__name">LunaBag</div>
+          <div class="brand__tag">Women Hand Bags • Bangladesh</div>
+        </div>
+      </div>
+
+      <div class="header__actions">
+        <button class="btn btn--ghost" id="openCheckoutBtn">Checkout</button>
+        <button class="cartBtn" id="openCartBtn" aria-label="Open cart">
+          Cart <span class="badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <h1>Premium Women’s Handbags</h1>
+          <p>
+            Trendy, durable, and affordable handbags for office, travel, and daily fashion.
+            Cash on Delivery available.
+          </p>
+          <div class="hero__cta">
+            <a class="btn" href="#products">Shop Now</a>
+            <a class="btn btn--ghost" href="#contact">Contact</a>
+          </div>
+
+          <div class="hero__points">
+            <div class="pill">Fast delivery</div>
+            <div class="pill">Quality materials</div>
+            <div class="pill">COD available</div>
+          </div>
+        </div>
+
+        <div class="hero__card">
+          <div class="hero__cardTitle">Today’s Offer</div>
+          <div class="hero__cardText">Buy 2 or more and get special discount.</div>
+          <div class="hero__cardNote">Set your offer text here</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section__head">
+          <h2>Products</h2>
+          <div class="searchRow">
+            <input id="searchInput" class="input" type="search" placeholder="Search bags..." />
+            <select id="sortSelect" class="input">
+              <option value="featured">Sort: Featured</option>
+              <option value="priceAsc">Price: Low to High</option>
+              <option value="priceDesc">Price: High to Low</option>
+              <option value="nameAsc">Name: A to Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="contact">
+      <div class="container">
+        <div class="twoCol">
+          <div>
+            <h2>Contact</h2>
+            <p class="muted">
+              You can place order from cart checkout. For quick order, use WhatsApp.
+            </p>
+            <div class="infoBox">
+              <div><strong>WhatsApp:</strong> <span id="whatsNumberText">+8801XXXXXXXXX</span></div>
+              <div><strong>Delivery:</strong> All over Bangladesh</div>
+              <div><strong>Payment:</strong> Cash on Delivery / bKash (manual)</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Quick WhatsApp Message</h3>
+            <p class="muted">This will open WhatsApp with your cart details.</p>
+            <button class="btn" id="whatsAppOrderBtn">Order on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CART DRAWER -->
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer__overlay" id="closeCartOverlay"></div>
+    <div class="drawer__panel">
+      <div class="drawer__head">
+        <h3>Your Cart</h3>
+        <button class="iconBtn" id="closeCartBtn" aria-label="Close cart">✕</button>
+      </div>
+
+      <div class="drawer__body" id="cartItems"></div>
+
+      <div class="drawer__foot">
+        <div class="totalRow">
+          <span>Total</span>
+          <strong id="cartTotal">৳0</strong>
+        </div>
+        <button class="btn" id="goCheckoutBtn">Proceed to Checkout</button>
+        <button class="btn btn--ghost" id="clearCartBtn">Clear Cart</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal__overlay" id="closeCheckoutOverlay"></div>
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3>Checkout</h3>
+        <button class="iconBtn" id="closeCheckoutBtn" aria-label="Close checkout">✕</button>
+      </div>
+
+      <div class="modal__body">
+        <div class="summary" id="checkoutSummary"></div>
+
+        <form id="checkoutForm" class="form">
+          <div class="row">
+            <div>
+              <label>Name</label>
+              <input class="input" required name="name" placeholder="Your name" />
+            </div>
+            <div>
+              <label>Phone</label>
+              <input class="input" required name="phone" placeholder="01XXXXXXXXX" />
+            </div>
+          </div>
+
+          <label>Address</label>
+          <input class="input" required name="address" placeholder="House/Road/Area, City" />
+
+          <div class="row">
+            <div>
+              <label>Payment</label>
+              <select class="input" name="payment" required>
+                <option value="Cash on Delivery">Cash on Delivery</option>
+                <option value="bKash (Manual)">bKash (Manual)</option>
+                <option value="Nagad (Manual)">Nagad (Manual)</option>
+              </select>
+            </div>
+            <div>
+              <label>Note (optional)</label>
+              <input class="input" name="note" placeholder="Color/urgent/etc." />
+            </div>
+          </div>
+
+          <div class="form__actions">
+            <button type="submit" class="btn">Place Order (WhatsApp)</button>
+            <button type="button" class="btn btn--ghost" id="copyOrderBtn">Copy Order Text</button>
+          </div>
+
+          <p class="tiny muted">
+            This demo sends order via WhatsApp message (manual confirmation). You can later connect real payment gateway.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__row">
+      <span class="muted">© <span id="year"></span> LunaBag. All rights reserved.</span>
+      <span class="muted">Made with HTML/CSS/JS</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
